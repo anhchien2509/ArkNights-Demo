@@ -1,0 +1,330 @@
+body {
+    background-color: rgb(49, 49, 49);
+}
+
+.Part {
+    padding: 150px 0;
+    height: 380px;
+    /* Hình nền Arknights với lớp overlay và hiệu ứng */
+    background: 
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Lớp phủ màu tối */
+      repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 2px, transparent 2px, transparent 4px), /* Sọc nhỏ */
+      url('../images/Ark.jpg'); /* Đường dẫn hình nền */
+  
+    background-size: cover; /* Phủ đầy không gian */
+    background-position: center; /* Căn giữa hình */
+    background-attachment: fixed; /* Cố định khi cuộn */
+    filter: grayscale(15%) brightness(70%); /* Xám và giảm độ sáng */
+    border-radius: 0; /* Bo góc nhẹ cho phần tử (nếu cần) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng để tạo chiều sâu */
+}
+
+/*-----Part-----*/
+.Part .row {
+    float: right;
+    padding: 365px 0;
+}
+
+.Part .contact {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 999;
+}
+
+.Part .contact .icon {
+    margin-left: 10px;
+}
+
+/*-------style menu 3 gạch-------*/
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001;
+
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/*------Hiệu ứng Menu-------*/
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(-5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(-5px, -5px);
+}
+
+/*------menu------*/
+.menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 20px 0;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.menu ul li a:hover {
+    color: #00aaff;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+    border-radius: 5px;
+}
+
+.menu.active {
+    left: 0;
+}
+
+/*-----Carousel-----*/
+/*body .EvenArk{
+    margin: 0;
+    padding: 0;
+    background-color: aqua;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.EvenArk {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+}*/
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 80%;
+    height: 220px;
+    margin: 30px auto;
+    border-radius: 0;
+    border: 1px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1000;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/*-------container event--------*/
+.event-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 80%;
+    margin: 20px auto;
+    margin-bottom: 30px;
+}
+
+.event-card {
+    background-color: #1c1c1c;
+    padding: 15px;
+    border-radius: 0;
+    border: 1px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.event-card:hover {
+    background-color: #146f9c;
+    transform: scale(1.05);
+}
+
+.event-card:hover .label, .event-card:hover .date {
+    color: white;
+}
+
+.label {
+    font-size: 22px;
+    color: #00aaff;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 17px;
+    color: #aaa;
+    margin: 5px 0;
+    float: right;
+}
+
+.event-title {
+    font-size: 18px;
+    margin: 10px 0;
+    color: white;
+}
+
+.read-more {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    float: right;
+    margin-top: auto;
+    transition: background-color 0.3s ease;
+}
+
+.event-card:hover .read-more {
+    background-color: #1c1c1c;
+}
+
+.read-more:hover {
+    background-color: #0088cc;
+}
+
+/*-------Footer-------*/
+.footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-top: 1px solid #333;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer-logo {
+    max-height: 100px;
+    margin-right: 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.footer-links a:hover {
+    text-decoration: none;
+}
+
+/*-----Download Section-----*/
+.download-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: absolute; /* Chúng tôi giữ vị trí cố định để nó nằm đè lên phần carousel hoặc slide */
+    bottom: 50px; /* Điều chỉnh để phần download nằm cách dưới slide một khoảng */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000; /* Đảm bảo phần download luôn nổi trên slide */
+}
+
+.download-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ để dễ nhìn */
+    padding: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.download-link:hover {
+    transform: scale(1.1); /* Hiệu ứng phóng to khi hover */
+    background-color: rgba(0, 0, 0, 0.7); /* Nền mờ hơn khi hover */
+}
+
+.download-link img {
+    width: 150px; /* Kích thước icon app */
+    margin-bottom: 5px;
+}
+
+/*-----Hiệu ứng hover trên từng nền tảng app-----*/
+.download-link.app-store:hover {
+    background-color: #0070c9; /* Màu đặc trưng của App Store */
+}
+
+.download-link.google-play:hover {
+    background-color: #34a853; /* Màu đặc trưng của Google Play */
+}
+
+.download-link.windows:hover {
+    background-color: #e83706; /* Màu đặc trưng của Windows */
+}
+
